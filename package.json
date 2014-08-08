@@ -1,0 +1,13 @@
+{
+  "name": "memory-leak",
+  "version": "0.0.1",
+  "description": "memory leak examples.",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "dependencies":{
+  	"express": "3.2.6"
+  },
+  "author": "lianyzhou"
+}

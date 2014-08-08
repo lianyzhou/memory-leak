@@ -1,0 +1,31 @@
+<button id="start">start</button>
+<button id="decrease">decrease</button>
+<script>
+function Item(x) {
+  this.x = x;
+}
+function numbers() {
+  var result = new Array(500000);
+  for (var i = 0, l = result.length; i < l; ++i)
+    result[i] = new Item(i);
+  return new Item(result);
+}
+function strings() {
+  var result = new Array(500000);
+  for (var i = 0, l = result.length; i < l; ++i)
+    result[i] = new Item(i.toString());
+  return new Item(result);
+}
+function start() {
+  numberCache = numbers();
+  stringCache = strings();
+  documentCache = new Item(document.body.textContent.toLowerCase());
+}
+function decrease() {
+  if(typeof numberCache !== 'undefined') {
+  	numberCache = stringCache = documentCache = null;
+  }
+}
+document.getElementById('start').onclick = start;
+document.getElementById('decrease').onclick = decrease;
+</script>

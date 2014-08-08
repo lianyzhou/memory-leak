@@ -1,0 +1,31 @@
+<div id="nodes"></div>
+<button id="start">start</button>
+<button id="stop">stop</button>
+<button id="decrease">decrease</button>
+<script>
+function createSomeNodes() {
+    var div,
+        i = 2000,
+        frag = document.createDocumentFragment();
+    for (;i > 0; i--) {
+        div = document.createElement("div");
+        div.appendChild(document.createTextNode(i + " - "+ new Date().toTimeString()));
+        frag.appendChild(div);
+    }
+    document.getElementById("nodes").appendChild(frag);
+}
+var timer;
+function grow() {
+	createSomeNodes();
+    timer = setTimeout(grow,2000);
+}
+function stop() {
+	clearTimeout(timer);
+}
+function decrease() {
+	document.getElementById('nodes').innerHTML = '';
+}
+document.getElementById('start').onclick = grow;
+document.getElementById('stop').onclick = stop;
+document.getElementById('decrease').onclick = decrease;
+</script>
