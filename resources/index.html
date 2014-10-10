@@ -9,3 +9,15 @@ a {display:block;}
 <a href="/resources/closure-maynot-leak.html">闭包中的内存</a>
 <a href="/resources/leaked-gc-nodes.html">JS中的垃圾回收时间</a>
 <a href="/resources/findPath.html">查找JS对象的位置</a>
+<script>
+	(function() {
+		var isGithubPage = /github\.io/.test(window.location.href);
+		if(isGithubPage) {
+			var links = document.querySelectorAll('a');
+			for(var i = 0 , len = links.length ; i < len ; i++) {
+				var href = links[i].href.replace(/^.*\/resources/ , '/resources');
+				links[i].href = '/memory-leak' + href;
+			}
+		}
+	})();
+</script>
