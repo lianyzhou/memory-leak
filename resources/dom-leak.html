@@ -1,7 +1,7 @@
 <p><button onclick="createTree()">Create tree</button></p><p><button onclick="detachTree()">Detach tree</button></p>
 <p><button onclick="removeTreeReference()">Remove tree reference</button></p><p><button onclick="removeLeafReference()">Remove leaf reference</button></p>
 <script>
-var leakedNodes = [], parentDiv, leaf, counter = 0;
+var parentDivs = [], leafDivs = [], parentDiv, leaf, counter = 0;
 function createLeaf() {
     counter++;
     var div = document.createElement("div");
@@ -26,15 +26,21 @@ function createNodesAndReturnLastLeaf(parentDiv, number) {
 }
 function createTree() {
     parentDiv = document.createElement("div");leaf = createNodesAndReturnLastLeaf(parentDiv, 4);
+    parentDivs.push(parentDiv);
+    leafDivs.push(leaf);
     document.body.appendChild(parentDiv);
 }
 function detachTree() {
-    document.body.removeChild(parentDiv);
+    for(var i = 0 , len = parentDivs.length ; i < len ; i++) {
+        document.body.removeChild(parentDivs[i]);    
+    }
 }
 function removeTreeReference() {
     parentDiv = null;
+    parentDivs = [];
 }
 function removeLeafReference() {
     leaf = null;
+    leafDivs = [];
 }
 </script>
